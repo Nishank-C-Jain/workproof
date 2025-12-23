@@ -4,10 +4,13 @@ import { orgLoginAPI } from "../../../api/org.api.js";
 import { setToken } from "../../../utils/token.js";
 import axiosInstance from "../../../api/axiosInstance.js";
 import axios from "../../../api/axiosInstance.js";
+import jwtDecode from "jwt-decode";
+import { decodeToken } from "../../../utils/decodeToken.js";
 import "../auth.css";
-const {login} = useAuth();
+import { useAuth } from "../../../auth/AuthContext.jsx";
 
 const OrgLogin = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     orgName: "",

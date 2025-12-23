@@ -6,6 +6,10 @@ import EmployeeLogin from "../pages/auth/emp/employeeLogin.jsx";
 import EmployeeRegister from "../pages/auth/emp/employeeRegister.jsx";
 import EmployeeProfile from "../pages/employee/employeeProfile.jsx";
 import OrgDashboard from "../pages/org/OrgDashboard.jsx";
+import OrgProfile from "../pages/org/OrgProfile.jsx";
+import ProtectedRoute from "../auth/ProtectedRoute.jsx"; 
+
+
 
 const AppRoutes = () => {
   return (
@@ -16,11 +20,8 @@ const AppRoutes = () => {
       <Route path="/org/login" element={<OrgLogin />} />
       <Route path="/org/register" element={<OrgRegister />} />
       <Route path="/org/dashboard" element={<OrgDashboard />} />
-      <Route
-  path="/org/dashboard"
-  element={<ProtectedRoute allowedRoles={['Admin']}><OrgDashboard /></ProtectedRoute>}
-/>
-      
+      <Route path="/org/profile" element={<ProtectedRoute allowedRole="Admin"> <OrgProfile /></ProtectedRoute>}/>
+ 
       {/* EMPLOYEE */}
       <Route path="/employee/login" element={<EmployeeLogin />} />
       <Route path="/employee/profile/:id" element={<EmployeeProfile />} />

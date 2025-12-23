@@ -19,7 +19,7 @@ const EmployeeList = ({ employees }) => {
             <td>{emp.aadhaarNumber}</td>
             <td>{emp.mobileNumber}</td>
             <td>{emp.role}</td>
-            <td>{emp.currentOrg}</td>
+            <td>{emp.currentOrg}ABC pvt.ltd</td>
           </tr>
         ))}
       </tbody>

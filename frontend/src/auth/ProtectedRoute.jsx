@@ -1,13 +1,18 @@
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../auth/AuthContext.jsx";
 
-const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { role, loading } = useAuth();
+const ProtectedRoute = ({ allowedRole, children }) => {
+  const { role } = useAuth();
 
-  if (loading) return null;
+  if (!role) {
+    // Not logged in
+    return <Navigate to="/org/login" replace />;
+  }
 
-  if (!allowedRoles.includes(role)) {
-    return <Navigate to="/unauthorized" />;
+  if (role !== allowedRole) {
+    // Role not allowed
+    return <Navigate to="/" replace />;
   }
 
   return children;
